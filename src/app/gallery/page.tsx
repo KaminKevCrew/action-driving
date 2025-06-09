@@ -98,7 +98,7 @@ const trainingEventsGallery = [
 const GalleryItem = ({ item, onClick }) => {
   return (
     <div 
-      className="bg-[#2f3136] rounded-lg overflow-hidden shadow-lg cursor-pointer transition-transform hover:scale-105"
+      className="bg-background-secondary rounded-lg overflow-hidden shadow-lg cursor-pointer transition-transform duration-default hover:scale-105"
       onClick={() => onClick(item)}
     >
       {item.type === 'video' ? (
@@ -112,7 +112,7 @@ const GalleryItem = ({ item, onClick }) => {
           ></iframe>
         </div>
       ) : (
-        <div className="aspect-video relative bg-gray-800">
+        <div className="aspect-video relative bg-background-tertiary">
           <Image 
             src={item.src} 
             alt={item.title} 
@@ -122,8 +122,8 @@ const GalleryItem = ({ item, onClick }) => {
         </div>
       )}
       <div className="p-4">
-        <h3 className="text-white font-semibold text-lg">{item.title}</h3>
-        <p className="text-gray-300 text-sm mt-1">{item.description}</p>
+        <h3 className="text-lg">{item.title}</h3>
+        <p className="text-text-normal text-sm mt-1">{item.description}</p>
       </div>
     </div>
   );
@@ -191,7 +191,7 @@ const GallerySection = ({ title, items, viewMode, onItemClick }) => {
 
   return (
     <div className="mb-16">
-      <h2 className="text-2xl font-bold mb-6 text-white">{title}</h2>
+      <h2 className="mb-6">{title}</h2>
 
       {viewMode === 'grid' ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -205,7 +205,7 @@ const GallerySection = ({ title, items, viewMode, onItemClick }) => {
           {canScrollLeft && (
             <button 
               onClick={scrollLeft}
-              className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-[#2f3136] bg-opacity-80 text-white p-2 rounded-r-lg z-10 hover:bg-[#5865F2] transition-opacity duration-300"
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-background-secondary bg-opacity-80 p-2 rounded-r-lg z-10 hover:bg-accent transition-colors duration-default"
               aria-label="Scroll left"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -230,7 +230,7 @@ const GallerySection = ({ title, items, viewMode, onItemClick }) => {
           {canScrollRight && (
             <button 
               onClick={scrollRight}
-              className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-[#2f3136] bg-opacity-80 text-white p-2 rounded-l-lg z-10 hover:bg-[#5865F2] transition-opacity duration-300"
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-background-secondary bg-opacity-80 p-2 rounded-l-lg z-10 hover:bg-accent transition-colors duration-default"
               aria-label="Scroll right"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -249,9 +249,9 @@ const FullscreenModal = ({ item, onClose }) => {
   if (!item) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 bg-background-tertiary bg-opacity-95 z-50 flex items-center justify-center p-4">
       <button 
-        className="absolute top-4 right-4 text-white text-2xl"
+        className="absolute top-4 right-4 text-text text-2xl hover:text-accent transition-colors duration-default"
         onClick={onClose}
       >
         ×
@@ -269,7 +269,7 @@ const FullscreenModal = ({ item, onClose }) => {
             ></iframe>
           </div>
         ) : (
-          <div className="aspect-video relative bg-gray-800">
+          <div className="aspect-video relative bg-background-secondary">
             <Image 
               src={item.src} 
               alt={item.title} 
@@ -279,9 +279,9 @@ const FullscreenModal = ({ item, onClose }) => {
           </div>
         )}
 
-        <div className="mt-4 text-white">
-          <h2 className="text-2xl font-bold">{item.title}</h2>
-          <p className="mt-2 text-gray-300">{item.description}</p>
+        <div className="mt-4">
+          <h2>{item.title}</h2>
+          <p className="mt-2 text-text-normal">{item.description}</p>
         </div>
       </div>
     </div>
@@ -302,14 +302,14 @@ export default function GalleryPage() {
 
   return (
     <div className="container mx-auto px-4 py-12">
-      <h1 className="text-3xl md:text-4xl font-bold mb-8 text-white text-center">
+      <h1 className="mb-8 text-center">
         Media Gallery
       </h1>
 
       <div className="flex justify-end mb-6">
-        <div className="bg-[#2f3136] rounded-lg p-2 inline-flex">
+        <div className="bg-background-secondary rounded-lg p-2 inline-flex">
           <button 
-            className={`px-3 py-1 rounded ${viewMode === 'grid' ? 'bg-[#5865F2] text-white' : 'text-gray-300 hover:bg-gray-700'}`}
+            className={`px-3 py-1 rounded ${viewMode === 'grid' ? 'bg-accent text-text' : 'text-text-muted hover:bg-ui-hover'}`}
             onClick={() => setViewMode('grid')}
             aria-label="Grid View"
           >
@@ -318,7 +318,7 @@ export default function GalleryPage() {
             </svg>
           </button>
           <button 
-            className={`px-3 py-1 rounded ml-2 ${viewMode === 'scroll' ? 'bg-[#5865F2] text-white' : 'text-gray-300 hover:bg-gray-700'}`}
+            className={`px-3 py-1 rounded ml-2 ${viewMode === 'scroll' ? 'bg-accent text-text' : 'text-text-muted hover:bg-ui-hover'}`}
             onClick={() => setViewMode('scroll')}
             aria-label="Scroll View"
           >
@@ -331,8 +331,8 @@ export default function GalleryPage() {
 
       {/* Demo Reel Section */}
       <div className="mb-16">
-        <h2 className="text-2xl font-bold mb-6 text-white">Demo Reel</h2>
-        <div className="bg-[#2f3136] p-6 rounded-lg shadow-lg">
+        <h2 className="mb-6">Demo Reel</h2>
+        <div className="bg-background-secondary p-6 rounded-lg shadow-lg">
           <div className="aspect-video">
             <iframe 
               src={demoReelVideo.src} 
@@ -343,8 +343,8 @@ export default function GalleryPage() {
             ></iframe>
           </div>
           <div className="mt-4">
-            <h3 className="text-white font-semibold text-xl">{demoReelVideo.title}</h3>
-            <p className="text-gray-300 mt-2">{demoReelVideo.description}</p>
+            <h3 className="text-xl">{demoReelVideo.title}</h3>
+            <p className="text-text-normal mt-2">{demoReelVideo.description}</p>
           </div>
         </div>
       </div>
