@@ -3,8 +3,35 @@
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 
+// TypeScript interfaces
+interface GalleryItem {
+  id: string;
+  type: 'video' | 'image';
+  src: string;
+  title: string;
+  description: string;
+  instagramLink?: string;
+}
+
+interface GalleryItemProps {
+  item: GalleryItem;
+  onClick: (item: GalleryItem) => void;
+}
+
+interface GallerySectionProps {
+  title: string;
+  items: GalleryItem[];
+  viewMode: 'grid' | 'scroll';
+  onItemClick: (item: GalleryItem) => void;
+}
+
+interface FullscreenModalProps {
+  item: GalleryItem | null;
+  onClose: () => void;
+}
+
 // Mock data for gallery items
-const demoReelVideo = {
+const demoReelVideo: GalleryItem = {
   id: 'demo1',
   type: 'video',
   src: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Placeholder YouTube embed
@@ -12,7 +39,7 @@ const demoReelVideo = {
   description: 'Showcasing our best stunt driving work from recent productions.'
 };
 
-const projectsGallery = [
+const projectsGallery: GalleryItem[] = [
   {
     id: 'proj1',
     type: 'video',
@@ -63,7 +90,7 @@ const projectsGallery = [
   }
 ];
 
-const trainingEventsGallery = [
+const trainingEventsGallery: GalleryItem[] = [
   {
     id: 'train1',
     type: 'image',
@@ -95,7 +122,7 @@ const trainingEventsGallery = [
 ];
 
 // Gallery Item Component
-const GalleryItem = ({ item, onClick }) => {
+const GalleryItem = ({ item, onClick }: GalleryItemProps) => {
   return (
     <div 
       className="bg-background-secondary rounded-lg overflow-hidden shadow-lg cursor-pointer transition-transform duration-default hover:scale-105"
@@ -130,10 +157,10 @@ const GalleryItem = ({ item, onClick }) => {
 };
 
 // Gallery Section Component
-const GallerySection = ({ title, items, viewMode, onItemClick }) => {
-  const scrollContainerRef = useRef(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(false);
+const GallerySection = ({ title, items, viewMode, onItemClick }: GallerySectionProps) => {
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState<boolean>(false);
+  const [canScrollRight, setCanScrollRight] = useState<boolean>(false);
 
   const checkScrollability = () => {
     const container = scrollContainerRef.current;
@@ -245,7 +272,7 @@ const GallerySection = ({ title, items, viewMode, onItemClick }) => {
 };
 
 // Fullscreen Modal Component
-const FullscreenModal = ({ item, onClose }) => {
+const FullscreenModal = ({ item, onClose }: FullscreenModalProps) => {
   if (!item) return null;
 
   return (
@@ -289,10 +316,10 @@ const FullscreenModal = ({ item, onClose }) => {
 };
 
 export default function GalleryPage() {
-  const [viewMode, setViewMode] = useState('scroll'); // 'grid' or 'scroll'
-  const [selectedItem, setSelectedItem] = useState(null);
+  const [viewMode, setViewMode] = useState<'grid' | 'scroll'>('scroll');
+  const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
 
-  const handleItemClick = (item) => {
+  const handleItemClick = (item: GalleryItem) => {
     setSelectedItem(item);
   };
 
