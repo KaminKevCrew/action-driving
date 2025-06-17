@@ -18,12 +18,12 @@ export default function Home() {
       <section className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
         <Link href="/about" className="block no-underline">
           <div className="bg-background-secondary p-8 rounded-lg shadow-lg flex flex-col items-center justify-center hover:bg-ui-hover transition-colors duration-default">
-            <div className="w-full h-64 flex items-center justify-center rounded-md">
+            <div className="w-full h-[32rem] flex items-center justify-center rounded-md">
               <Image 
                 src="/logos/ADC_OfficialLogo_white.PNG" 
                 alt="Action Driving Logo" 
-                width={300} 
-                height={100} 
+                width={405} 
+                height={135} 
                 className="h-auto"
                 priority
               />
@@ -37,10 +37,17 @@ export default function Home() {
 
         <Link href="/gallery" className="block no-underline">
           <div className="bg-background-secondary p-8 rounded-lg shadow-lg flex flex-col items-center justify-center hover:bg-ui-hover transition-colors duration-default">
-            <div className="w-full h-64 bg-background-tertiary mb-4 flex items-center justify-center rounded-md">
-              <p className="text-text-muted">Photo Placeholder</p>
+            <div className="w-full h-[32rem] flex items-center justify-center rounded-md">
+              <Image 
+                src="/adc-photos/ADC Blue.jpg" 
+                alt="Action Driving Collective work" 
+                width={600} 
+                height={400} 
+                className="h-auto rounded-lg"
+                priority
+              />
             </div>
-            <h2>Our Work</h2>
+            <h2 className="mt-4">Our Work</h2>
             <p className="text-text-normal mt-2 text-center">
               Delivering high-quality stunt driving for film and television
             </p>
@@ -60,6 +67,7 @@ export default function Home() {
           Get in Touch
         </Link>
       </section>
+
     </div>
   );
 }
