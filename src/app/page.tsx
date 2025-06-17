@@ -21,11 +21,11 @@ export default function Home() {
           <div className="bg-background-secondary p-8 rounded-lg shadow-lg flex flex-col items-center justify-center hover:bg-ui-hover transition-colors duration-default">
             <div className="w-full h-[32rem] flex items-center justify-center rounded-md">
               <Image 
-                src={getImagePath("/logos/ADC_OfficialLogo_white.PNG")} 
-                alt="Action Driving Logo" 
-                width={405} 
-                height={135} 
-                className="h-auto"
+                src={getImagePath("/adc-photos/ADC Brand.jpg")} 
+                alt="Action Driving Brand" 
+                width={480} 
+                height={320} 
+                className="h-auto rounded-lg"
                 priority
               />
             </div>
