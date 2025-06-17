@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
+import { getImagePath } from '../../utils/imageLoader';
 
 // TypeScript interfaces
 interface GalleryItem {
@@ -141,7 +142,7 @@ const GalleryItem = ({ item, onClick }: GalleryItemProps) => {
       ) : (
         <div className="aspect-video relative bg-background-tertiary">
           <Image 
-            src={item.src} 
+            src={item.type === 'image' ? getImagePath(item.src) : item.src} 
             alt={item.title} 
             fill 
             className="object-cover"
@@ -298,7 +299,7 @@ const FullscreenModal = ({ item, onClose }: FullscreenModalProps) => {
         ) : (
           <div className="aspect-video relative bg-background-secondary">
             <Image 
-              src={item.src} 
+              src={item.type === 'image' ? getImagePath(item.src) : item.src} 
               alt={item.title} 
               fill 
               className="object-contain"

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { getImagePath } from '../utils/imageLoader';
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -15,7 +16,7 @@ const Navbar = () => {
             className="block rounded p-2 bg-background-secondary hover:bg-ui-hover transition-colors duration-default"
           >
             <Image 
-              src="/logos/ADC_OfficialLogo_white.PNG" 
+              src={getImagePath("/logos/ADC_OfficialLogo_white.PNG")} 
               alt="Action Driving Logo" 
               width={150} 
               height={50} 

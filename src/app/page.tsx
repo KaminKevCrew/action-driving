@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { default as Link } from "next/link";
+import { getImagePath } from "../utils/imageLoader";
 
 export default function Home() {
   return (
@@ -20,7 +21,7 @@ export default function Home() {
           <div className="bg-background-secondary p-8 rounded-lg shadow-lg flex flex-col items-center justify-center hover:bg-ui-hover transition-colors duration-default">
             <div className="w-full h-[32rem] flex items-center justify-center rounded-md">
               <Image 
-                src="/logos/ADC_OfficialLogo_white.PNG" 
+                src={getImagePath("/logos/ADC_OfficialLogo_white.PNG")} 
                 alt="Action Driving Logo" 
                 width={405} 
                 height={135} 
@@ -39,7 +40,7 @@ export default function Home() {
           <div className="bg-background-secondary p-8 rounded-lg shadow-lg flex flex-col items-center justify-center hover:bg-ui-hover transition-colors duration-default">
             <div className="w-full h-[32rem] flex items-center justify-center rounded-md">
               <Image 
-                src="/adc-photos/ADC Blue.jpg" 
+                src={getImagePath("/adc-photos/ADC Blue.jpg")} 
                 alt="Action Driving Collective work" 
                 width={600} 
                 height={400} 
