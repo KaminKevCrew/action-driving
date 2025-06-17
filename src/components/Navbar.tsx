@@ -57,8 +57,8 @@ const Navbar = () => {
         <div className="flex justify-between items-center w-full xl:w-auto mb-4 xl:mb-0">
           <Link 
             href="/" 
-            className="block rounded p-2 bg-background-secondary hover:bg-ui-hover transition-colors duration-default flex-shrink-0"
-            style={{ minWidth: '180px' }}
+            className="block rounded px-2 py-2 bg-background-secondary hover:bg-ui-hover transition-colors duration-default flex-shrink-0 flex justify-center items-center"
+            style={{ minWidth: '160px' }}
           >
             <Image 
               src={getImagePath(isLightTheme 
@@ -67,7 +67,7 @@ const Navbar = () => {
               alt="Action Driving Logo" 
               width={150} 
               height={50} 
-              style={{ height: '60px', width: 'auto', objectFit: 'contain' }}
+              style={{ height: '60px', width: 'auto', objectFit: 'contain', margin: '0 auto' }}
               priority
             />
           </Link>

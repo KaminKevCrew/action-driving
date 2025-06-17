@@ -91,21 +91,21 @@
 /* Custom styles below */
 
 /* Button with accent background should use the theme's button text color */
-:root:not(.theme-light):not(.theme-high-contrast):not(.theme-solarized-dark) button.bg-accent {
-  color: var(--button-text);
+:root:not(.theme-light):not(.theme-high-contrast):not(.theme-solarized-dark) .bg-accent {
+  color: var(--button-text) !important;
 }
 
 /* Theme-specific button text colors */
-.theme-light button.bg-accent {
-  color: var(--button-text);
+.theme-light .bg-accent {
+  color: var(--button-text) !important;
 }
 
-.theme-high-contrast button.bg-accent {
-  color: var(--button-text);
+.theme-high-contrast .bg-accent {
+  color: var(--button-text) !important;
 }
 
-.theme-solarized-dark button.bg-accent {
-  color: var(--button-text);
+.theme-solarized-dark .bg-accent {
+  color: var(--button-text) !important;
 }
 
 /* Custom scrollbar for a more cohesive dark theme */
