@@ -21,12 +21,12 @@ module.exports = {
         // Accent color
         accent: {
           DEFAULT: 'var(--accent)', // #5865F2
-          hover: '#4752c4', // Darker shade for hover states
+          hover: 'var(--accent-hover)', // Theme-aware hover state
         },
         // Additional UI colors
         ui: {
-          hover: '#40444b', // Used for hover states on dark backgrounds
-          border: '#40444b', // Used for borders
+          hover: 'var(--ui-hover)', // Used for hover states on backgrounds
+          border: 'var(--ui-border)', // Used for borders
         },
       },
       fontFamily: {

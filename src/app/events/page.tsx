@@ -9,7 +9,7 @@ export default function EventsPage() {
 
   return (
     <div className="container mx-auto px-4 py-12">
-      <h1 className="text-3xl md:text-4xl font-bold mb-8 text-white text-center">
+      <h1 className="text-3xl md:text-4xl font-bold mb-8 text-text text-center">
         Upcoming Events
       </h1>
 
@@ -17,10 +17,10 @@ export default function EventsPage() {
         <div className="inline-flex rounded-md shadow-sm" role="group">
           <button
             type="button"
-            className={`px-4 py-2 text-sm font-medium rounded-l-lg ${
+            className={`px-4 py-2 text-sm font-medium rounded-l-lg transition-colors duration-default ${
               activeView === 'list'
-                ? 'bg-[#5865F2] text-white'
-                : 'bg-[#2f3136] text-gray-300 hover:bg-[#40444b] hover:text-white'
+                ? 'bg-accent text-text'
+                : 'bg-background-secondary text-text-normal hover:bg-ui-hover hover:text-text'
             }`}
             onClick={() => setActiveView('list')}
           >
@@ -28,10 +28,10 @@ export default function EventsPage() {
           </button>
           <button
             type="button"
-            className={`px-4 py-2 text-sm font-medium rounded-r-lg ${
+            className={`px-4 py-2 text-sm font-medium rounded-r-lg transition-colors duration-default ${
               activeView === 'calendar'
-                ? 'bg-[#5865F2] text-white'
-                : 'bg-[#2f3136] text-gray-300 hover:bg-[#40444b] hover:text-white'
+                ? 'bg-accent text-text'
+                : 'bg-background-secondary text-text-normal hover:bg-ui-hover hover:text-text'
             }`}
             onClick={() => setActiveView('calendar')}
           >
@@ -40,7 +40,7 @@ export default function EventsPage() {
         </div>
       </div>
 
-      <div className="bg-[#2f3136] p-6 rounded-lg shadow-lg">
+      <div className="bg-background-secondary p-6 rounded-lg shadow-lg">
         {activeView === 'list' ? <EventsList /> : <CalendarView />}
       </div>
     </div>

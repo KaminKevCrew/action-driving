@@ -207,12 +207,12 @@ const CalendarView = () => {
   return (
     <div>
       <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-6">
-        <h2 className="text-2xl font-semibold text-white mb-4 md:mb-0">Calendar View</h2>
+        <h2 className="text-2xl font-semibold text-text mb-4 md:mb-0">Calendar View</h2>
 
         <div className="flex items-center space-x-2">
           <button 
             onClick={goToPreviousMonth}
-            className="p-2 rounded-full hover:bg-[#40444b] text-gray-300"
+            className="p-2 rounded-full hover:bg-ui-hover text-text-normal transition-colors duration-default"
             aria-label="Previous month"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -222,16 +222,16 @@ const CalendarView = () => {
 
           <button 
             onClick={goToCurrentMonth}
-            className="px-3 py-1 rounded bg-[#40444b] text-gray-300 hover:bg-[#5865F2] hover:text-white text-sm"
+            className="px-3 py-1 rounded bg-background-secondary text-text-normal hover:bg-accent hover:text-text text-sm transition-colors duration-default"
           >
             Today
           </button>
 
-          <span className="text-white font-medium">{formatMonthYear(currentDate)}</span>
+          <span className="text-text font-medium">{formatMonthYear(currentDate)}</span>
 
           <button 
             onClick={goToNextMonth}
-            className="p-2 rounded-full hover:bg-[#40444b] text-gray-300"
+            className="p-2 rounded-full hover:bg-ui-hover text-text-normal transition-colors duration-default"
             aria-label="Next month"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -250,36 +250,36 @@ const CalendarView = () => {
                 className="w-3 h-3 rounded-full mr-2" 
                 style={{ backgroundColor: getEventTypeColor(type) }}
               ></div>
-              <span className="text-sm text-gray-300 capitalize">{type}</span>
+              <span className="text-sm text-text-normal capitalize">{type}</span>
             </div>
           ))}
         </div>
       )}
 
       {/* Calendar Grid */}
-      <div className="bg-[#36393f] rounded-lg overflow-hidden shadow-lg">
+      <div className="bg-background rounded-lg overflow-hidden shadow-lg">
         {/* Weekday headers */}
-        <div className="grid grid-cols-7 bg-[#2f3136] text-center">
+        <div className="grid grid-cols-7 bg-background-secondary text-center">
           {weekdays.map(day => (
-            <div key={day} className="py-2 text-sm font-medium text-gray-300">
+            <div key={day} className="py-2 text-sm font-medium text-text-normal">
               {day}
             </div>
           ))}
         </div>
 
         {/* Calendar days */}
-        <div className="grid grid-cols-7 border-t border-[#40444b]">
+        <div className="grid grid-cols-7 border-t border-ui-border">
           {calendarDays.map((day, index) => (
             <div 
               key={index}
-              className={`aspect-[4/3] p-1 border-b border-r border-[#40444b] ${
-                day.day === 0 ? 'bg-[#2f3136] text-gray-600' : 'hover:bg-[#40444b] cursor-pointer'
+              className={`aspect-[4/3] p-1 border-b border-r border-ui-border ${
+                day.day === 0 ? 'bg-background-secondary text-text-muted' : 'hover:bg-ui-hover cursor-pointer transition-colors duration-default'
               } ${
                 selectedDate && day.date && 
                 selectedDate.getDate() === day.date.getDate() && 
                 selectedDate.getMonth() === day.date.getMonth() && 
                 selectedDate.getFullYear() === day.date.getFullYear() 
-                  ? 'bg-[#40444b]' 
+                  ? 'bg-background-secondary' 
                   : ''
               }`}
               onClick={() => day.date && setSelectedDate(day.date)}
@@ -287,7 +287,7 @@ const CalendarView = () => {
               {day.day > 0 && (
                 <>
                   <div className="text-right mb-1">
-                    <span className="text-sm text-gray-300">{day.day}</span>
+                    <span className="text-sm text-text-normal">{day.day}</span>
                   </div>
 
                   {/* Event indicators */}
@@ -301,7 +301,7 @@ const CalendarView = () => {
                       ></div>
                     ))}
                     {day.events.length > 3 && (
-                      <div className="text-xs text-gray-400 mt-1">
+                      <div className="text-xs text-text-muted mt-1">
                         +{day.events.length - 3} more
                       </div>
                     )}
@@ -318,11 +318,11 @@ const CalendarView = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           <div 
             ref={popupRef}
-            className="bg-[#2f3136] rounded-lg p-6 shadow-xl max-w-2xl w-full max-h-[80vh] overflow-y-auto relative"
+            className="bg-background-secondary rounded-lg p-6 shadow-xl max-w-2xl w-full max-h-[80vh] overflow-y-auto relative"
           >
             <button 
               onClick={closePopup}
-              className="absolute top-4 right-4 text-gray-400 hover:text-white"
+              className="absolute top-4 right-4 text-text-muted hover:text-text transition-colors duration-default"
               aria-label="Close popup"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -330,7 +330,7 @@ const CalendarView = () => {
               </svg>
             </button>
 
-            <h3 className="text-xl font-semibold text-white mb-4">
+            <h3 className="text-xl font-semibold text-text mb-4">
               Events for {formatDate(selectedDate)}
             </h3>
 
@@ -338,20 +338,20 @@ const CalendarView = () => {
               {events.map((event) => (
                 <div 
                   key={event.id} 
-                  className="bg-[#40444b] rounded-lg p-4 shadow-md"
+                  className="bg-background-secondary rounded-lg p-4 shadow-md"
                 >
                   <div className="flex items-center mb-2">
                     <div 
                       className="w-3 h-3 rounded-full mr-2" 
                       style={{ backgroundColor: getEventTypeColor(event.type) }}
                     ></div>
-                    <span className="text-sm text-gray-300 capitalize">{event.type}</span>
+                    <span className="text-sm text-text-normal capitalize">{event.type}</span>
                   </div>
 
-                  <h4 className="text-lg font-medium text-white mb-2">{event.title}</h4>
-                  <p className="text-gray-300 mb-3">{event.description}</p>
+                  <h4 className="text-lg font-medium text-text mb-2">{event.title}</h4>
+                  <p className="text-text-normal mb-3">{event.description}</p>
 
-                  <div className="flex flex-col sm:flex-row text-sm text-gray-400">
+                  <div className="flex flex-col sm:flex-row text-sm text-text-muted">
                     <div className="flex items-center mb-2 sm:mb-0 sm:mr-4">
                       <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>

@@ -71,16 +71,16 @@ const EventsList = () => {
 
   return (
     <div>
-      <h2 className="text-2xl font-semibold text-white mb-6">Upcoming Events</h2>
+      <h2 className="text-2xl font-semibold text-text mb-6">Upcoming Events</h2>
 
       {events.length === 0 ? (
-        <p className="text-gray-300">No upcoming events found.</p>
+        <p className="text-text-normal">No upcoming events found.</p>
       ) : (
         <div className="space-y-6">
           {events.map((event) => (
             <div 
               key={event.id} 
-              className="bg-[#40444b] rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
+              className="bg-background-secondary rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
             >
               <div className="p-5">
                 <div className="flex items-center mb-3">
@@ -88,13 +88,13 @@ const EventsList = () => {
                     className="w-3 h-3 rounded-full mr-2" 
                     style={{ backgroundColor: getEventTypeColor(event.type) }}
                   ></div>
-                  <span className="text-sm text-gray-300 capitalize">{event.type}</span>
+                  <span className="text-sm text-text-normal capitalize">{event.type}</span>
                 </div>
 
-                <h3 className="text-xl font-semibold text-white mb-2">{event.title}</h3>
-                <p className="text-gray-300 mb-4">{event.description}</p>
+                <h3 className="text-xl font-semibold text-text mb-2">{event.title}</h3>
+                <p className="text-text-normal mb-4">{event.description}</p>
 
-                <div className="flex flex-col sm:flex-row sm:items-center text-sm text-gray-400 mb-2">
+                <div className="flex flex-col sm:flex-row sm:items-center text-sm text-text-muted mb-2">
                   <div className="flex items-center mb-2 sm:mb-0 sm:mr-4">
                     <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>

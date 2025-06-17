@@ -105,12 +105,12 @@ export const getEventsForDate = (date: Date): Event[] => {
   const year = date.getFullYear();
   const month = date.getMonth();
   const day = date.getDate();
-  
+
   return events.filter(event => {
     const eventStart = new Date(event.startDate);
     const eventEnd = new Date(event.endDate);
     const checkDate = new Date(year, month, day);
-    
+
     // Check if the date falls within the event's duration
     return checkDate >= new Date(eventStart.getFullYear(), eventStart.getMonth(), eventStart.getDate()) && 
            checkDate <= new Date(eventEnd.getFullYear(), eventEnd.getMonth(), eventEnd.getDate());
@@ -119,16 +119,25 @@ export const getEventsForDate = (date: Date): Event[] => {
 
 // Get color for event type
 export const getEventTypeColor = (type: EventType): string => {
+  // Get the CSS variables from the document root
+  const getCSSVariable = (varName: string, fallback: string): string => {
+    if (typeof window !== 'undefined') {
+      const value = getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
+      return value || fallback;
+    }
+    return fallback;
+  };
+
   switch (type) {
     case 'training':
-      return '#4CAF50'; // Green
+      return getCSSVariable('--accent', '#5865F2'); // Use accent color for training
     case 'production':
-      return '#F44336'; // Red
+      return getCSSVariable('--foreground', '#ffffff'); // Use foreground color for production
     case 'workshop':
-      return '#2196F3'; // Blue
+      return getCSSVariable('--text-muted', '#b9bbbe'); // Use muted text color for workshop
     case 'conference':
-      return '#FF9800'; // Orange
+      return getCSSVariable('--text-normal', '#dcddde'); // Use normal text color for conference
     default:
-      return '#9C27B0'; // Purple (fallback)
+      return getCSSVariable('--accent', '#5865F2'); // Accent color as fallback
   }
 };

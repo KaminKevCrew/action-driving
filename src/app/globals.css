@@ -3,14 +3,63 @@
 @tailwind utilities;
 
 :root {
-  /* Discord-inspired dark theme colors */
-  --background: #36393f;
+  /* Default theme (Darker with neon green accents) */
+  --background: #121212;
   --foreground: #ffffff;
-  --secondary-bg: #2f3136;
-  --tertiary-bg: #202225;
-  --accent: #5865F2;
+  --secondary-bg: #1a1a1a;
+  --tertiary-bg: #0f0f0f;
+  --accent: #39FF14;
+  --accent-hover: #32D912;
   --text-muted: #b9bbbe;
-  --text-normal: #dcddde;
+  --text-normal: #f0f0f0;
+  --ui-hover: #333333;
+  --ui-border: #444444;
+  --button-text: #121212; /* Text color for buttons with accent background */
+}
+
+/* Light theme */
+.theme-light {
+  --background: #ffffff;
+  --foreground: #23272A;
+  --secondary-bg: #f2f3f5;
+  --tertiary-bg: #e3e5e8;
+  --accent: #FF69B4; /* Hot pink accent color */
+  --accent-hover: #FF1493; /* Slightly darker hot pink for hover */
+  --text-muted: #747f8d;
+  --text-normal: #2e3338;
+  --ui-hover: #e3e5e8;
+  --ui-border: #d4d7dc;
+  --button-text: #ffffff; /* White text for buttons with accent background */
+}
+
+/* High Contrast theme */
+.theme-high-contrast {
+  --background: #000000;
+  --foreground: #ffffff;
+  --secondary-bg: #121212;
+  --tertiary-bg: #1e1e1e;
+  --accent: #00aaff;
+  --accent-hover: #0088cc;
+  --text-muted: #cccccc;
+  --text-normal: #f0f0f0;
+  --ui-hover: #333333;
+  --ui-border: #444444;
+  --button-text: #000000; /* Black text for buttons with accent background */
+}
+
+/* Solarized Dark theme */
+.theme-solarized-dark {
+  --background: #002b36; /* base03 */
+  --foreground: #839496; /* base0 */
+  --secondary-bg: #073642; /* base02 */
+  --tertiary-bg: #001e26; /* darker than base03 */
+  --accent: #2aa198; /* cyan */
+  --accent-hover: #1f8f86; /* darker cyan */
+  --text-muted: #586e75; /* base01 */
+  --text-normal: #93a1a1; /* base1 */
+  --ui-hover: #073642; /* base02 */
+  --ui-border: #586e75; /* base01 */
+  --button-text: #fdf6e3; /* Yellowish off-white color (Solarized base3) */
 }
 
 @layer base {
@@ -31,7 +80,7 @@
   }
 
   a {
-    @apply text-accent hover:underline;
+    @apply text-accent;
   }
 
   button {
@@ -40,6 +89,24 @@
 }
 
 /* Custom styles below */
+
+/* Button with accent background should use the theme's button text color */
+:root:not(.theme-light):not(.theme-high-contrast):not(.theme-solarized-dark) button.bg-accent {
+  color: var(--button-text);
+}
+
+/* Theme-specific button text colors */
+.theme-light button.bg-accent {
+  color: var(--button-text);
+}
+
+.theme-high-contrast button.bg-accent {
+  color: var(--button-text);
+}
+
+.theme-solarized-dark button.bg-accent {
+  color: var(--button-text);
+}
 
 /* Custom scrollbar for a more cohesive dark theme */
 ::-webkit-scrollbar {
@@ -52,12 +119,14 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4a4d53;
+  background: #2a2a2a;
   border-radius: 4px;
+  border: 1px solid rgba(57, 255, 20, 0.2);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #5c5f66;
+  background: #333333;
+  border: 1px solid rgba(57, 255, 20, 0.4);
 }
 
 /* Hide scrollbars by default but reserve space for them */
@@ -88,8 +157,9 @@
 }
 
 .scrollbar-hide::-webkit-scrollbar-thumb {
-  background-color: #4a4d53;
+  background-color: #2a2a2a;
   border-radius: 4px;
+  border: 1px solid rgba(57, 255, 20, 0.2);
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.5s ease, visibility 0.5s ease;
@@ -105,7 +175,7 @@
 
 /* For Firefox */
 .scrollbar-hide:hover {
-  scrollbar-color: #4a4d53 var(--tertiary-bg);
+  scrollbar-color: #2a2a2a var(--tertiary-bg);
   transition: scrollbar-color 0.5s ease;
 }
 
