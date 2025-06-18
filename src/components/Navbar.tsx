@@ -182,6 +182,17 @@ const Navbar = () => {
               Merchandise
             </Link>
           </li>
+          <li className="xl:h-full mb-2 xl:mb-0">
+            <Link 
+              href="/membership" 
+              className={`px-3 py-2 rounded text-text hover:bg-ui-hover transition-colors duration-default no-underline hover:no-underline xl:h-full flex items-center ${
+                pathname === '/membership' ? 'bg-ui-hover' : ''
+              }`}
+              onClick={closeMenu}
+            >
+              Membership
+            </Link>
+          </li>
           <li className="xl:h-full flex items-center">
             <ThemeSwitcher />
           </li>
