@@ -20,12 +20,12 @@ export default function EventsPage() {
             <h2 className="text-2xl font-bold text-text">Slide-a-rama</h2>
             <p className="text-text-normal">Our semi-regular stunt driving competition - April 14-15, 2025</p>
           </div>
-          <a 
-            href="./slide-a-rama" 
+          <Link 
+            href="/events/slide-a-rama" 
             className="inline-block bg-accent hover:bg-accent-hover text-button-text font-semibold py-2 px-6 rounded-lg transition-colors duration-default"
           >
             Learn More
-          </a>
+          </Link>
         </div>
       </div>
 
