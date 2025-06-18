@@ -331,7 +331,7 @@ export default function GalleryPage() {
   return (
     <div className="container mx-auto px-4 py-12">
       <h1 className="mb-8 text-center">
-        Media Gallery
+        Gallery
       </h1>
 
       <div className="flex justify-end mb-6">

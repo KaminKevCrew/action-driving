@@ -135,7 +135,7 @@ const Navbar = () => {
               }`}
               onClick={closeMenu}
             >
-              Film Production Services
+              Production Services
             </Link>
           </li>
           <li className="xl:h-full mb-2 xl:mb-0">
@@ -146,7 +146,7 @@ const Navbar = () => {
               }`}
               onClick={closeMenu}
             >
-              Media Gallery
+              Gallery
             </Link>
           </li>
           <li className="xl:h-full mb-2 xl:mb-0">
@@ -157,7 +157,7 @@ const Navbar = () => {
               }`}
               onClick={closeMenu}
             >
-              Calendar/Events
+              Events
             </Link>
           </li>
           <li className="xl:h-full mb-2 xl:mb-0">
@@ -168,7 +168,18 @@ const Navbar = () => {
               }`}
               onClick={closeMenu}
             >
-              Sponsors & Partnerships
+              Partners
+            </Link>
+          </li>
+          <li className="xl:h-full mb-2 xl:mb-0">
+            <Link 
+              href="/merch" 
+              className={`px-3 py-2 rounded text-text hover:bg-ui-hover transition-colors duration-default no-underline hover:no-underline xl:h-full flex items-center ${
+                pathname === '/merch' ? 'bg-ui-hover' : ''
+              }`}
+              onClick={closeMenu}
+            >
+              Merchandise
             </Link>
           </li>
           <li className="xl:h-full flex items-center">
