@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from 'react';
+import Link from 'next/link';
 import EventsList from '../../components/events/EventsList';
 import CalendarView from '../../components/events/CalendarView';
 
