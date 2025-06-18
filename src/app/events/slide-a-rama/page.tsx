@@ -136,7 +136,7 @@ export default function SlideARamaPage() {
         </p>
         <div className="flex justify-center">
           <Link 
-            href="/contact?prompt=slide-a-rama" 
+            href="../../contact?prompt=slide-a-rama" 
             className="inline-block bg-accent hover:bg-accent-hover text-button-text font-semibold py-3 px-6 rounded-lg transition-colors duration-default text-center"
           >
             Register Now

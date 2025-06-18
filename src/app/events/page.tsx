@@ -21,7 +21,7 @@ export default function EventsPage() {
             <p className="text-text-normal">Our semi-regular stunt driving competition - April 14-15, 2025</p>
           </div>
           <a 
-            href="/events/slide-a-rama" 
+            href="./slide-a-rama" 
             className="inline-block bg-accent hover:bg-accent-hover text-button-text font-semibold py-2 px-6 rounded-lg transition-colors duration-default"
           >
             Learn More
