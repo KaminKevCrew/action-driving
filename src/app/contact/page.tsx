@@ -1,8 +1,21 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 
 export default function ContactPage() {
+  const searchParams = useSearchParams();
+
+  // Message templates for quick prompts
+  const membershipInquiryMessage = "I am interested in becoming a member of Action Driving.\n\nI would like to know more about:\n- Membership requirements\n- Benefits and privileges\n- Current membership fees\n- Application process\n\nPlease provide me with detailed information. Thank you.";
+
+  const trainingInformationMessage = "I would like to inquire about your training programs.\n\nI am specifically interested in:\n- Types of training courses available\n- Schedule and duration\n- Skill level requirements\n- Pricing information\n\nPlease send me more details about your training options.";
+
+  const filmWorkOpportunityMessage = "I am interested in film work opportunities with Action Driving.\n\nMy relevant experience includes:\n- [Add your driving experience]\n- [Add any film/stunt work experience]\n\nPlease let me know about any upcoming opportunities and what requirements you have for participants.";
+
+  // Message template for Slide-a-rama registration
+  const slideARamaMessage = "I would like to register for the Slide-a-rama event on April 14-15, 2025.\n\nFirst Name: [first name]\nLast Name: [last name]\n\nPlease contact me with registration details.";
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -11,6 +24,22 @@ export default function ContactPage() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [subscribed, setSubscribed] = useState(false);
+  const [activePrompt, setActivePrompt] = useState('');
+
+  // Handle auto-selection of prompt from URL parameters
+  useEffect(() => {
+    const prompt = searchParams.get('prompt');
+    if (prompt === 'slide-a-rama') {
+      handleQuickPrompt("Slide-a-rama Registration", slideARamaMessage);
+
+      // Scroll to the form and focus on the name field
+      const nameInput = document.getElementById('name');
+      if (nameInput) {
+        nameInput.scrollIntoView({ behavior: 'smooth' });
+        nameInput.focus();
+      }
+    }
+  }, [searchParams]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -31,13 +60,16 @@ export default function ContactPage() {
       subject: '',
       message: ''
     });
+    setActivePrompt('');
     // In a real application, you would send this data to a server
   };
 
-  const handleQuickPrompt = (prompt: string) => {
+  const handleQuickPrompt = (prompt: string, message: string = '') => {
+    setActivePrompt(prompt);
     setFormData(prev => ({
       ...prev,
-      subject: prompt
+      subject: prompt,
+      message: message
     }));
   };
 
@@ -102,22 +134,45 @@ export default function ContactPage() {
           <h3 className="text-lg font-semibold text-text mb-2">Quick Prompts:</h3>
           <div className="flex flex-wrap gap-2">
             <button 
-              onClick={() => handleQuickPrompt("Membership Inquiry")}
-              className="px-4 py-2 bg-accent text-text rounded hover:bg-accent-hover transition-colors duration-default"
+              onClick={() => handleQuickPrompt("Membership Inquiry", membershipInquiryMessage)}
+              className={`px-4 py-2 rounded transition-colors duration-default ${
+                activePrompt === "Membership Inquiry" 
+                  ? "bg-accent-hover ring-2 ring-accent" 
+                  : "bg-accent hover:bg-accent-hover"
+              }`}
             >
               Membership Inquiry
             </button>
             <button 
-              onClick={() => handleQuickPrompt("Training Information")}
-              className="px-4 py-2 bg-accent text-text rounded hover:bg-accent-hover transition-colors duration-default"
+              onClick={() => handleQuickPrompt("Training Information", trainingInformationMessage)}
+              className={`px-4 py-2 rounded transition-colors duration-default ${
+                activePrompt === "Training Information" 
+                  ? "bg-accent-hover ring-2 ring-accent" 
+                  : "bg-accent hover:bg-accent-hover"
+              }`}
             >
               Training Information
             </button>
             <button 
-              onClick={() => handleQuickPrompt("Film Work Opportunity")}
-              className="px-4 py-2 bg-accent text-text rounded hover:bg-accent-hover transition-colors duration-default"
+              onClick={() => handleQuickPrompt("Film Work Opportunity", filmWorkOpportunityMessage)}
+              className={`px-4 py-2 rounded transition-colors duration-default ${
+                activePrompt === "Film Work Opportunity" 
+                  ? "bg-accent-hover ring-2 ring-accent" 
+                  : "bg-accent hover:bg-accent-hover"
+              }`}
             >
               Film Work Opportunity
+            </button>
+            <button 
+              onClick={() => handleQuickPrompt("Slide-a-rama Registration", slideARamaMessage)}
+              className={`px-4 py-2 rounded transition-colors duration-default ${
+                activePrompt === "Slide-a-rama Registration" 
+                  ? "bg-accent-hover ring-2 ring-accent" 
+                  : "bg-accent hover:bg-accent-hover"
+              }`}
+              id="slide-a-rama-prompt"
+            >
+              Slide-a-rama Registration
             </button>
           </div>
         </div>
@@ -178,7 +233,7 @@ export default function ContactPage() {
                 value={formData.message}
                 onChange={handleChange}
                 required
-                rows={5}
+                rows={10}
                 className="w-full px-4 py-2 bg-background-tertiary text-text rounded focus:outline-none focus:ring-2 focus:ring-accent"
               ></textarea>
             </div>

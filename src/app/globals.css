@@ -91,20 +91,24 @@
 /* Custom styles below */
 
 /* Button with accent background should use the theme's button text color */
-:root:not(.theme-light):not(.theme-high-contrast):not(.theme-solarized-dark) .bg-accent {
+:root:not(.theme-light):not(.theme-high-contrast):not(.theme-solarized-dark) .bg-accent,
+:root:not(.theme-light):not(.theme-high-contrast):not(.theme-solarized-dark) .bg-accent-hover {
   color: var(--button-text) !important;
 }
 
 /* Theme-specific button text colors */
-.theme-light .bg-accent {
+.theme-light .bg-accent,
+.theme-light .bg-accent-hover {
   color: var(--button-text) !important;
 }
 
-.theme-high-contrast .bg-accent {
+.theme-high-contrast .bg-accent,
+.theme-high-contrast .bg-accent-hover {
   color: var(--button-text) !important;
 }
 
-.theme-solarized-dark .bg-accent {
+.theme-solarized-dark .bg-accent,
+.theme-solarized-dark .bg-accent-hover {
   color: var(--button-text) !important;
 }
 
