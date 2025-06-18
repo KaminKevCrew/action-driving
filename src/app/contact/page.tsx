@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 
-export default function ContactPage() {
+// Client component that uses useSearchParams
+function ContactForm() {
   const searchParams = useSearchParams();
 
   // Message templates for quick prompts
@@ -279,5 +280,14 @@ export default function ContactPage() {
         )}
       </div>
     </div>
+  );
+}
+
+// Main page component that wraps the ContactForm in a Suspense boundary
+export default function ContactPage() {
+  return (
+    <Suspense fallback={<div className="container mx-auto px-4 py-12 text-center">Loading contact form...</div>}>
+      <ContactForm />
+    </Suspense>
   );
 }
