@@ -10,6 +10,7 @@
   --tertiary-bg: #0f0f0f;
   --accent: #39FF14;
   --accent-hover: #32D912;
+  --accent-rgb: 57, 255, 20; /* RGB values for the accent color */
   --text-muted: #b9bbbe;
   --text-normal: #f0f0f0;
   --ui-hover: #333333;
@@ -25,6 +26,7 @@
   --tertiary-bg: #e3e5e8;
   --accent: #FF69B4; /* Hot pink accent color */
   --accent-hover: #FF1493; /* Slightly darker hot pink for hover */
+  --accent-rgb: 255, 105, 180; /* RGB values for the accent color */
   --text-muted: #747f8d;
   --text-normal: #2e3338;
   --ui-hover: #e3e5e8;
@@ -40,6 +42,7 @@
   --tertiary-bg: #1e1e1e;
   --accent: #00aaff;
   --accent-hover: #0088cc;
+  --accent-rgb: 0, 170, 255; /* RGB values for the accent color */
   --text-muted: #cccccc;
   --text-normal: #f0f0f0;
   --ui-hover: #333333;
@@ -55,6 +58,7 @@
   --tertiary-bg: #001e26; /* darker than base03 */
   --accent: #2aa198; /* cyan */
   --accent-hover: #1f8f86; /* darker cyan */
+  --accent-rgb: 42, 161, 152; /* RGB values for the accent color */
   --text-muted: #586e75; /* base01 */
   --text-normal: #93a1a1; /* base1 */
   --ui-hover: #073642; /* base02 */
